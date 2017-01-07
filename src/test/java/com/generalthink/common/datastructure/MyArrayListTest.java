@@ -15,8 +15,6 @@ public class MyArrayListTest{
       list.add(i,i);
     }
     assertEquals(list.size(), 30);
-    
-    System.out.println("testAdd success");
   }
   @Test
   public void testRemove() {
@@ -27,6 +25,7 @@ public class MyArrayListTest{
     list.remove(4);
     list.remove(4);
     list.remove(4);
+    
     assertEquals(list.toString(), "[0, 1, 2]");
   }
   @Test
@@ -50,6 +49,7 @@ public class MyArrayListTest{
     
     list.set(0, 0);
     list.set(1, 2);
+    
     assertTrue(list.get(1) == 2);
   }
   
