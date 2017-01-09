@@ -74,6 +74,15 @@ public class MyLinkedListTest {
       fail(e.toString());
     }
   }
+  @Test
+  public void testRemoveUseIterator() {
+	Iterator<Integer> it = list.iterator();
+	while(it.hasNext()) {
+		it.next();
+		it.remove();
+	}
+	assertTrue(list.size() == 0);
+  }
   
   @Test
   public void testIteratorModifi() {

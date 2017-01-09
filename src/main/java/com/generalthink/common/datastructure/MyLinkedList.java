@@ -92,9 +92,18 @@ public class MyLinkedList<T> extends AbstractList<T> implements Iterable<T>{
 
     rangeCheckForElements(index);
     Node<T> needRemoveNode = getNode(index);
-    needRemoveNode.prev.next = needRemoveNode.next;
-    needRemoveNode.next.prev = needRemoveNode.prev;
-
+    Node<T> nextNode = needRemoveNode.next;
+    Node<T> prevNode = needRemoveNode.prev;
+    if(null != nextNode) {
+    	nextNode.prev = prevNode;
+    } else {
+    	tail = prevNode;
+    }
+    if(null != prevNode) {
+    	prevNode.next = nextNode;
+    } else {
+    	head = nextNode;
+    }
     size--;
     modalCount++;
     
@@ -198,7 +207,9 @@ public class MyLinkedList<T> extends AbstractList<T> implements Iterable<T>{
       checkForModification();
       
       MyLinkedList.this.remove(nextIndex);
-       
+      
+      //移除元素之后,下一个元素的索引需要重新定位
+      nextIndex--;
       expectCount = modalCount;
       
       allowRemove = false;
