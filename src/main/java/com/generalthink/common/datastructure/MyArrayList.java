@@ -79,6 +79,12 @@ public class MyArrayList<T> extends AbstractList<T> {
 		return removeElement;
 	}
 
+	@Override
+	public boolean add(T e) {
+		add(size(),e);
+		return true;
+	}
+	
 	private void rangeCheck(int index) {
 		// 这里不是index>=size是因为添加元素的时候是可以添加到集合末尾(size)
 		if (index > size || index < 0) {
